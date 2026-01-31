@@ -27,10 +27,52 @@ STEP-5: The characters in the keyword are repeated sequentially so as to match w
 STEP-6: Pick the first letter of the plain text and that of the keyword as the row indices and column indices respectively.
 STEP-7: The junction character where these two meet forms the cipher character.
 STEP-8: Repeat the above steps to generate the entire cipher text.
+## PROGRAM:
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
+int main() {
+    char plaintext[100], key[100], newKey[100], cipher[100];
+    int i, j = 0;
 
-## PROGRAM
+    printf("Enter the plaintext (uppercase letters): ");
+    scanf("%s", plaintext);
 
-## OUTPUT
+    printf("Enter the key (uppercase letters): ");
+    scanf("%s", key);
+
+    int lenP = strlen(plaintext);
+    int lenK = strlen(key);
+
+    // Step 5: Repeat key to match plaintext length
+    for (i = 0; i < lenP; i++) {
+        newKey[i] = key[j];
+        j = (j + 1) % lenK;
+    }
+    newKey[i] = '\0';
+
+    // Step 6 & 7: Generate cipher text
+    for (i = 0; i < lenP; i++) {
+        if (isalpha(plaintext[i])) {
+            cipher[i] = ((plaintext[i] - 'A') + (newKey[i] - 'A')) % 26 + 'A';
+        } else {
+            cipher[i] = plaintext[i]; // keep non-letters as it is
+        }
+    }
+    cipher[i] = '\0';
+
+    printf("Repeated Key : %s\n", newKey);
+    printf("Cipher Text  : %s\n", cipher);
+
+    return 0;
+}
+```
+
+## OUTPUT:
+<img width="668" height="235" alt="image" src="https://github.com/user-attachments/assets/7e805d7d-bd31-454e-98bb-ebb6775afe38" />
+
 
 ## RESULT
+Thus the program run successfully 
