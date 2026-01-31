@@ -7,7 +7,7 @@
 
 ## AIM:
 
-To implement the Vigenere Cipher substitution technique using C program.
+To implement the Vigenere Cipher substitution technique using C program. 
 
 ## DESCRIPTION:
 
